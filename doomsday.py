@@ -62,17 +62,17 @@ def run_stats():
             corrs.append(float(line.partition(',')[0]))
             times.append(float(line.partition(',')[2].partition('\n')[0]))
 
-            if len(corrs) < 10:
-                print('need more results for stats')
-            else:
-                per_all = round(float(sum(corrs)/len(corrs)), 2)*100
-                tim_all = round(sum(times)/len(times), 1)
-                corrs, times = corrs[-10:], times[-10:]
-                per_cur = round(sum(corrs)/len(corrs), 2)*100
-                tim_cur = round(sum(times)/len(times), 1)
+        if len(corrs) < 10:
+            print('need more results for stats')
+        else:
+            per_all = round(float(sum(corrs)/len(corrs)), 2)*100
+            tim_all = round(sum(times)/len(times), 1)
+            corrs, times = corrs[-10:], times[-10:]
+            per_cur = round(sum(corrs)/len(corrs), 2)*100
+            tim_cur = round(sum(times)/len(times), 1)
         
-                print('last 10: ' + str(per_cur) + '% vs. all: ' + str(per_all) + '%')
-                print('last 10: ' + str(tim_cur) + 's vs. all: ' + str(tim_all) + 's')
+        print('last 10: ' + str(per_cur) + '% vs. all: ' + str(per_all) + '%')
+        print('last 10: ' + str(tim_cur) + 's vs. all: ' + str(tim_all) + 's')
                     
     except:
         print('no doomsday.csv to read')
